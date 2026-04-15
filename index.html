@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Peryshidia's Birthday Party</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(145deg, #fff0f5 0%, #ffe4f0 50%, #fff8fb 100%);
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .confetti-row {
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-align: center;
+  }
+
+  .page-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #c94d80;
+    letter-spacing: 0.5px;
+  }
+
+  .page-subtitle {
+    font-size: 14px;
+    color: #e08ab0;
+    text-align: center;
+    margin-top: -0.5rem;
+  }
+
+  /* Horizontal row of cards */
+  .cards-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    max-width: 960px;
+    align-items: stretch;
+  }
+
+  .card {
+    background: white;
+    border-radius: 20px;
+    border: 1.5px solid #f7c0d8;
+    padding: 1.25rem;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* ── Background image support ── */
+  .card.has-bg {
+    background-image: url('YOUR_BACKGROUND_IMAGE.jpg'); /* ← replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .card.has-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.78); /* ← adjust opacity to taste */
+    border-radius: 18px;
+    pointer-events: none;
+  }
+
+  .card.has-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+  /* ─────────────────────────────── */
+
+  .card-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #e08ab0;
+    font-weight: 600;
+  }
+
+  /* Details card */
+  .badge {
+    display: inline-block;
+    background: #ffe0ef;
+    color: #c94d80;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+
+  .detail-cell {
+    background: #fff5f9;
+    border-radius: 10px;
+    border: 1px solid #ffd6e8;
+    padding: 0.6rem 0.85rem;
+  }
+
+  .detail-cell .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e08ab0;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .detail-cell .value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #b03570;
+  }
+
+  /* Video card */
+  .video-card video {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+    flex: 1;
+  }
+
+  /* Photos card */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .photo-grid img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  }
+
+  /* RSVP banner */
+  .rsvp-card {
+    background: white;
+    border-radius: 20px;
+    border: 1.5px solid #f7c0d8;
+    padding: 1.5rem 2rem;
+    max-width: 960px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .rsvp-card p {
+    font-size: 14px;
+    color: #e08ab0;
+    flex: 1;
+  }
+
+  .rsvp-btn {
+    display: inline-block;
+    background: #e0457a;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 36px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .rsvp-btn:hover {
+    background: #c93668;
+    transform: scale(1.04);
+  }
+
+  .bottom-confetti {
+    font-size: 18px;
+    letter-spacing: 6px;
+    opacity: 0.7;
+  }
+
+  /* Responsive: stack cards on small screens */
+  @media (max-width: 640px) {
+    .cards-row {
+      flex-direction: column;
+    }
+    .rsvp-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="confetti-row">🎀 🎉 🌸 🎂 🌸 🎉 🎀</div>
+  <div class="page-title">Peryshidia's Birthday Party</div>
+  <div class="page-subtitle">I humbly invite you,Faith Wambui,to join me as I celebrate my 24 years around the sun</div>
+
+  <div class="cards-row">
+
+    <!-- Details Card -->
+    <div class="card has-bg ">
+      <div class="card-label">Event details</div>
+      <div class="badge">You're invited</div>
+      <div class="detail-cell">
+        <div class="label">Date</div>
+        <div class="value">25th April 2025</div>
+      </div>
+      <div class="detail-cell">
+        <div class="label">Time</div>
+        <div class="value">7pm till dawn</div>
+      </div>
+      <div class="detail-cell">
+        <div class="label">Location</div>
+        <div class="value">Tsuku Tsuku Restaurant</div>
+      </div>
+      <div class="detail-cell">
+        <div class="label">Location</div>
+        <div class="value">Tsuku Tsuku Restaurant</div>
+      </div>
+    </div>
+
+    <!-- Video Card — no has-bg -->
+    <div class="card video-card">
+      <div class="card-label">Invite video</div>
+      <video controls>
+        <source src="WhatsApp Video 2026-04-15 at 1.56.47 PM.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Photos Card -->
+    <div class="card has-bg">
+      <div class="card-label">Moments</div>
+      <div class="photo-grid">
+        <img src="WhatsApp Image 2026-03-01 at 6.10.54 PM (1).jpeg" alt="Party Photo 1">
+        <img src="WhatsApp Image 2026-03-01 at 6.10.54 PM (2).jpeg" alt="Party Photo 2">
+        <img src="WhatsApp Image 2026-04-15 at 2.53.00 PM.jpeg" alt="Party Photo 3">
+        <img src="WhatsApp Image 2026-04-15 at 2.49.06 PM.jpeg" alt="Party Photo 4">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RSVP Banner -->
+  <!-- REPLACE example@email.com with the real RSVP email -->
+  <div class="rsvp-card">
+    <p>Kindly confirm your attendance by reaching out to us.</p>
+    <a class="rsvp-btn" href="mailto:peryshidiamuchai@email.com">RSVP Now</a>
+  </div>
+
+  <div class="bottom-confetti">🌸 🎀 🌸 🎀 🌸</div>
+
+</body>
+</html>
